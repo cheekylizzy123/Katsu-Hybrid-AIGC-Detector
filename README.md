@@ -61,7 +61,7 @@ pip install -r requirements.txt
 
 The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone through PyTorch Hub, so internet access is required unless the model has already been cached locally.
 
-### Inference Interface
+## Inference Interface
 
 **1. Open Colab notebook and Install dependencies** 
 
