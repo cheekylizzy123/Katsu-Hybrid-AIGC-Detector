@@ -1,7 +1,7 @@
 # Katsu-Hybrid-AIGC-Detector
-Katsu is a lightweight hybrid model for detecting **AI-generated images (AIGC)** using visual evidence contained directly in the image pixels.
+Katsu is a lightweight hybrid model for detecting **AI-generated images (AIGC)** using visual evidence contained directly in the image pixels. Link to **Demo**: https://katsu-demogit-ix9aua9mfr9fv4akep7dku.streamlit.app/
 
-The model is designed specifically for **real-world redistribution**, where images may be recompressed, resized, cropped, or affected by noise. Rather than relying on metadata, watermarks, or provenance signals, Katsu combines semantic visual representations with complementary image-artifact and texture features. Link to Demo: https://katsu-demogit-ix9aua9mfr9fv4akep7dku.streamlit.app/
+The model is designed specifically for **real-world redistribution**, where images may be recompressed, resized, cropped, or affected by noise. Rather than relying on metadata, watermarks, or provenance signals, Katsu combines semantic visual representations with complementary image-artifact and texture features. **Robustness Evaluation Summary** is included at the end.
 
 The system uses a **frozen DINOv2 ViT-S/14 backbone** together with two lightweight artifact-detection branches:
 
@@ -11,7 +11,7 @@ The system uses a **frozen DINOv2 ViT-S/14 backbone** together with two lightwei
 
 Only **33,842 trainable parameters** are used on top of the frozen backbone.
 
-This project was developed for **TikTok TechJam 2026**.
+This project was developed for **TikTok TechJam 2026**. 
 
 <img width="1024" height="1059" alt="Katsu_Summary_Visual" src="https://github.com/user-attachments/assets/6d2cc0fd-172f-41be-a4e6-af7d3777ba73" />
 
@@ -192,4 +192,13 @@ The approach therefore does not depend on:
 
 Instead, the detector operates directly on the available image content.
 
-The robustness experiments and analysis are included in `KatsuDemo.ipynb`.
+[5_6098369637764834733.csv](https://github.com/user-attachments/files/31617422/5_6098369637764834733.csv)
+Condition,Accuracy,AUROC
+Clean,86.0%,91.9%
+JPEG (q=30),84.7%,89.8%
+Blur (sigma=2.0),80.0%,88.2%
+Resize (0.25x),75.3%,86.8%
+Noise (sigma=0.10),80.0%,87.6%
+Center crop (80%),84.0%,90.5%
+
+
