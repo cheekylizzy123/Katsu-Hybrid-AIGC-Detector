@@ -19,6 +19,7 @@ katsu-hybrid-aigc-detector/
 ├── predict.py               # Required directory -> JSON inference script
 ├── requirements.txt         # Python dependencies
 ├── .gitignore
+├── hybrid_checkpoint.pt
 └── src/
     ├── __init__.py
     └── model.py              # Model architecture and feature extraction
