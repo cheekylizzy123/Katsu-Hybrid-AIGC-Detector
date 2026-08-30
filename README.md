@@ -74,7 +74,7 @@ The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone th
 CPU inference may be possible but is expected to be substantially slower than GPU inference.
 
 
-## Running Inference
+## Inference Interface
 
 Katsu provides a standalone inference script that accepts an **image directory** and produces a JSON file containing a confidence score for each image.
 
@@ -189,7 +189,7 @@ Input Image ──────────────────────�
                                       └──────────┬──────────┘
                                                  │
                                   ┌──────────────▼──────────────┐
-                                  │ Importance-Weighted Fusion │
+                                  │ Importance-Weighted Fusion  │
                                   │            Head             │
                                   └──────────────┬──────────────┘
                                                  │
@@ -227,37 +227,6 @@ The outputs of the three branches are projected into a common representation and
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
 
 
-## Training & Evaluation
-
-The complete experimental pipeline is provided in:
-
-```text
-KatsuDemo.ipynb
-```
-
-The notebook contains:
-
-* Dataset preparation
-* Image preprocessing
-* Feature extraction
-* Model construction
-* Training
-* Evaluation
-* Robustness analysis
-* Error analysis
-* Interactive demonstration
-* Model checkpoint generation
-* Command-line inference preparation
-
-For normal inference and evaluation of new images, use:
-
-```bash
-python predict.py
-```
-
-rather than executing the entire notebook.
-
-
 ## Redistribution Robustness
 
 A central design goal of Katsu is maintaining useful detection performance when images undergo transformations commonly introduced during online redistribution.
@@ -273,80 +242,3 @@ The approach therefore does not depend on:
 Instead, the detector operates directly on the available image content.
 
 The robustness experiments and analysis are included in `KatsuDemo.ipynb`.
-
-
-## Development
-
-Create a virtual environment:
-
-```bash
-python -m venv katsu-env
-```
-
-Activate it on macOS/Linux:
-
-```bash
-source katsu-env/bin/activate
-```
-
-On Windows:
-
-```bash
-katsu-env\Scripts\activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-
-##  Notebook
-
-`KatsuDemo.ipynb` serves as the complete research and experimentation record for the project.
-
-It contains the development pipeline used to:
-
-1. Prepare the dataset
-2. Extract model features
-3. Train the hybrid detector
-4. Evaluate performance
-5. Investigate robustness
-6. Perform error analysis
-7. Save the trained checkpoint
-8. Demonstrate inference
-
-The standalone `predict.py` script provides the reproducible inference interface for external evaluation.
-
-
-## Reproducible Inference
-
-A fresh user can reproduce inference using:
-
-```bash
-git clone https://github.com/YOUR-USERNAME/katsu-hybrid-aigc-detector.git
-
-cd katsu-hybrid-aigc-detector
-
-pip install -r requirements.txt
-
-python predict.py ./test_images \
-    --checkpoint ./hybrid_checkpoint.pt \
-    --output ./predictions.json
-```
-
-The resulting `predictions.json` contains:
-
-```json
-[
-  {
-    "image_path": "test_images/example.jpg",
-    "pred": 0.XXXX
-  }
-]
-```
-
-
-
-
