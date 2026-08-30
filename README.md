@@ -30,7 +30,7 @@ Katsu is a **content-based fallback layer** for exactly that scenario: it doesn'
 ```text
 katsu-hybrid-aigc-detector/
 ├── 📄 README.md
-├── 📓 KatsuDemo.ipynb          # Full experimental/training/demo notebook
+├── 📓 KatsuTraining.ipynb      # Full experimental/training/analysis notebook
 ├── 🐍 predict.py               # Directory → JSON inference script
 ├── 📦 hybrid_checkpoint.pt     # Trained model checkpoint
 ├── 📋 requirements.txt         # Python dependencies
@@ -38,6 +38,12 @@ katsu-hybrid-aigc-detector/
 └── 📁 src/
     ├── 📄 __init__.py
     └── 🧠 model.py             # Model architecture and feature extraction
+└── 📁 katsu-streamlit-demo/
+    ├── 📄 README.md
+    ├── 📋 app.py
+    ├── 📦 hybrid_checkpoint.pt
+    ├── 📋 predict.py
+    └── 📋 requirements.txt
 ```
 
 
@@ -138,10 +144,10 @@ Input Image ──────────────────────�
                                   │            Head             │
                                   └──────────────┬──────────────┘
                                                  │
-                                            Sigmoid
+                                              Sigmoid
                                                  │
                                                  ▼
-                                        AIGC Confidence
+                                          AIGC Confidence
 ```
 
 ### 1. DINOv2 Branch
