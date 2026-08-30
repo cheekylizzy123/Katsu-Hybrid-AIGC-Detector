@@ -32,8 +32,8 @@ katsu-hybrid-aigc-detector/
 ├── 📄 README.md
 ├── 📓 KatsuDemo.ipynb          # Full experimental/training/demo notebook
 ├── 🐍 predict.py               # Directory → JSON inference script
-├── 📦 hybrid_checkpoint.pt     # Python dependencies
-├── 📋 requirements.txt         # Trained model checkpoint
+├── 📦 hybrid_checkpoint.pt     # Trained model checkpoint
+├── 📋 requirements.txt         # Python dependencies
 │
 └── 📁 src/
     ├── 📄 __init__.py
