@@ -90,7 +90,7 @@ uploaded_zip = files.upload()
 ```
 ```python
 import zipfile
-with zipfile.ZipFile('images.zip', 'r') as z:
+with zipfile.ZipFile('images.zip', 'r') as z: # change 'image.zip' to 'file_name.zip'
     z.extractall('/content/test_images')
 ```
 
@@ -178,7 +178,7 @@ The outputs of the three branches are projected into a common representation and
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
 
 
-### Redistribution Robustness
+### Robustness Evaluation Summary
 
 A central design goal of Katsu is maintaining useful detection performance when images undergo transformations commonly introduced during online redistribution.
 
@@ -192,13 +192,13 @@ The approach therefore does not depend on:
 
 Instead, the detector operates directly on the available image content.
 
-[5_6098369637764834733.csv](https://github.com/user-attachments/files/31617422/5_6098369637764834733.csv)
-Condition,Accuracy,AUROC
-Clean,86.0%,91.9%
-JPEG (q=30),84.7%,89.8%
-Blur (sigma=2.0),80.0%,88.2%
-Resize (0.25x),75.3%,86.8%
-Noise (sigma=0.10),80.0%,87.6%
-Center crop (80%),84.0%,90.5%
+| Condition | Accuracy | AUROC |
+|---|---|---|
+| Clean | 86.0% | 91.9% |
+| JPEG (q=30) | 84.7% | 89.8% |
+| Blur (sigma=2.0) | 80.0% | 88.2% |
+| Resize (0.25x) | 75.3% | 86.8% |
+| Noise (sigma=0.10) | 80.0% | 87.6% |
+| Center crop (80%) | 84.0% | 90.5% |
 
 
