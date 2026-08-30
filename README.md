@@ -10,6 +10,20 @@ Platforms like TikTok already auto-label AI-generated content via C2PA Content C
 
 Katsu is a **content-based fallback layer** for exactly that scenario: it doesn't rely on any embedded signal, only the pixels themselves, and it's trained specifically to keep working after the kinds of transformations that strip metadata in the first place. That's the "redistribution robustness" this problem statement is testing, not just detecting AI-generated images in their original, clean form.
 
+## Project Structure
+
+```text
+katsu-hybrid-aigc-detector/
+├── README.md
+├── KatsuDemo.ipynb          # Full experimental/training/demo notebook
+├── predict.py               # Required directory -> JSON inference script
+├── requirements.txt         # Python dependencies
+├── .gitignore
+└── src/
+    ├── __init__.py
+    └── model.py              # Model architecture and feature extraction
+```
+
 ## Installation and Setup
 
 Python 3.10+ is recommended.
