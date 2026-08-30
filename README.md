@@ -1,6 +1,4 @@
 # Katsu-Hybrid-AIGC-Detector
-Katsu is a lightweight, self-supervised-backbone hybrid model for detecting AI-generated images, built specifically to stay accurate after the image has been through real-world redistribution (recompression, resizing, cropping, noise). It combines a **frozen DINOv2-S/14 backbone** with two complementary, lightweight artifact-detection branches: an **NPR (upsampling-residual) branch** and a **texture-statistics (LBP/GLCM) branch**, fused through an **importance-weighted gating head**. Only **33,842 trainable parameters** sit on top of the frozen backbone. This model is built for Tik Tok's annual hackathon **TechJam 2026**.
-
 Katsu is a lightweight hybrid model for detecting **AI-generated images (AIGC)** using visual evidence contained directly in the image pixels.
 
 The model is designed specifically for **real-world redistribution**, where images may be recompressed, resized, cropped, or affected by noise. Rather than relying on metadata, watermarks, or provenance signals, Katsu combines semantic visual representations with complementary image-artifact and texture features.
