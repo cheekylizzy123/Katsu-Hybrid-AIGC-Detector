@@ -63,7 +63,7 @@ The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone th
 
 ## Inference Interface
 
-**1. Open Colab notebook and Install dependencies** 
+**1. Install dependencies in Colab notebook** 
 
 ```python
 !pip install -q scikit-image opencv-python-headless
