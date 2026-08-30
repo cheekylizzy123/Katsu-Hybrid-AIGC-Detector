@@ -1,0 +1,9 @@
+streamlit>=1.30
+torch
+torchvision
+pillow
+opencv-python-headless
+scikit-image
+matplotlib
+numpy
+huggingface_hub
