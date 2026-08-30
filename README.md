@@ -39,9 +39,7 @@ katsu-hybrid-aigc-detector/
 ```
 
 
-## Quick Start
-
-### Installation
+## Installation and Setup
 
 Python **3.10+** is recommended.
 
@@ -60,21 +58,7 @@ pip install -r requirements.txt
 
 The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone through PyTorch Hub, so internet access is required unless the model has already been cached locally.
 
-
-## System Requirements
-
-### Recommended
-
-* **Python:** 3.10+
-* **RAM:** 16 GB+
-* **GPU:** NVIDIA CUDA-compatible GPU recommended
-* **Storage:** Sufficient space for PyTorch, DINOv2, and dependencies
-* **Internet:** Required for the first DINOv2 download unless the backbone is already cached
-
-CPU inference may be possible but is expected to be substantially slower than GPU inference.
-
-
-## Inference Interface
+### Inference Interface
 
 Katsu provides a standalone inference script that accepts an **image directory** and produces a JSON file containing a confidence score for each image.
 
@@ -82,60 +66,6 @@ Katsu provides a standalone inference script that accepts an **image directory**
 python predict.py ./path/to/images \
     --checkpoint ./hybrid_checkpoint.pt \
     --output ./predictions.json
-```
-
-### Supported Image Formats
-
-The input directory is searched recursively for:
-
-```text
-.jpg
-.jpeg
-.png
-.bmp
-.webp
-```
-
-For example:
-
-```text
-images/
-├── real/
-│   ├── image1.jpg
-│   └── image2.png
-└── generated/
-    ├── image3.jpg
-    └── image4.webp
-```
-
-Running:
-
-```bash
-python predict.py ./images \
-    --checkpoint ./hybrid_checkpoint.pt \
-    --output predictions.json
-```
-
-will process all supported images recursively.
-
-
-### JSON Output
-
-The inference script produces one prediction for every successfully processed image.
-
-Example:
-
-```json
-[
-  {
-    "image_path": "./images/real/image1.jpg",
-    "pred": 0.0871
-  },
-  {
-    "image_path": "./images/generated/image3.jpg",
-    "pred": 0.9234
-  }
-]
 ```
 
 ### Output Fields
@@ -148,20 +78,6 @@ Example:
 The `pred` value ranges from **0 to 1**.
 
 Higher values indicate stronger model confidence that the image is AI-generated.
-
-For example:
-
-```text
-pred = 0.92
-```
-
-indicates a strong model prediction toward AIGC generation, while:
-
-```text
-pred = 0.08
-```
-
-indicates a strong prediction toward a non-generated/real image.
 
 
 ## Model Architecture
