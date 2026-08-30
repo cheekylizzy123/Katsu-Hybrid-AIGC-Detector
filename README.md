@@ -51,17 +51,6 @@ The output contains `image_path` and `pred` for every successfully processed ima
 
 `pred` is the model's sigmoid output and is interpreted as the estimated likelihood of the image being AIGC-generated. Higher values indicate stronger model confidence that the image is generated.
 
-## Checkpoint
-
-Place the trained `hybrid_checkpoint.pt` in the repository root, or provide its location using `--checkpoint`.
-
-The checkpoint must contain these state dictionaries:
-
-- `residual_encoder_state`
-- `texture_proj_state`
-- `fusion_head_state`
-
-The pretrained DINOv2 backbone is loaded separately and is not stored inside this checkpoint.
 
 ## Notebook
 
@@ -74,7 +63,7 @@ For reproducible command-line inference, use `predict.py` rather than executing 
 The inference pipeline is:
 
 ```text
-                    ┌── DINOv2 ViT-S/14 ──────────┐
+                    ┌── DINOv2 ViT-S/14 ───────────┐
 Input image ────────┼── NPR residual encoder ──────┼── Importance-weighted fusion ── sigmoid ── pred
                     └── LBP + GLCM texture ────────┘
 ```
