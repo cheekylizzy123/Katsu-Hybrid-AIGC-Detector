@@ -55,7 +55,7 @@ Python **3.10+** is recommended.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/katsu-hybrid-aigc-detector.git
+git clone https://github.com/cheekylizzy123/Katsu-Hybrid-AIGC-Detector.git
 cd katsu-hybrid-aigc-detector
 ```
 
