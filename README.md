@@ -63,12 +63,42 @@ The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone th
 
 ### Inference Interface
 
-Katsu provides a standalone inference script that accepts an **image directory** and produces a JSON file containing a confidence score for each image.
+**1. Open Colab notebook and Install dependencies** 
 
-```bash
-python predict.py ./path/to/images \
-    --checkpoint ./hybrid_checkpoint.pt \
-    --output ./predictions.json
+```python
+!pip install -q scikit-image opencv-python-headless
+```
+
+**2. Upload `predict.py` and `hybrid_checkpoint.pt`**
+
+```python
+from google.colab import files
+uploaded = files.upload()
+```
+
+**3. Upload your test images.** 
+
+```python
+from google.colab import files
+uploaded_zip = files.upload() 
+```
+```python
+import zipfile
+with zipfile.ZipFile('images.zip', 'r') as z:
+    z.extractall('/content/test_images')
+```
+
+**4. Run the scoring script:**
+
+```python
+!python predict.py /content/test_images --checkpoint hybrid_checkpoint.pt --output predictions.json
+```
+
+**5. Download the results:**
+
+```python
+from google.colab import files
+files.download('predictions.json')
 ```
 
 | Output Field | Description                                                                |
