@@ -45,26 +45,6 @@ Katsu is a **content-based fallback layer** for exactly that scenario: it doesn'
   * Combines semantic, residual, and texture information
   * Learns the relative importance of the different branches
 
-* 🛡️ **Redistribution robustness**
-
-  * Designed with real-world image transformations in mind
-  * Targets detection after compression, resizing, cropping, and noise
-
-* ⚡ **Lightweight trainable head**
-
-  * Frozen DINOv2 backbone
-  * Only 33,842 trainable parameters
-
-* 📁 **Batch directory inference**
-
-  * Accepts an image directory as input
-  * Recursively processes supported image formats
-
-* 📄 **JSON predictions**
-
-  * Produces one confidence score per image
-  * Output contains `image_path` and `pred`
-
 ---
 
 ## 📁 Project Structure
@@ -82,20 +62,9 @@ katsu-hybrid-aigc-detector/
     └── 🧠 model.py             # Model architecture and feature extraction
 ```
 
-### File Descriptions
-
-| File                   | Description                                                                                                                                |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `KatsuDemo.ipynb`      | Complete experimental pipeline including dataset preparation, training, evaluation, robustness analysis, error analysis, and demonstration |
-| `predict.py`           | Standalone inference script required for evaluating a directory of images                                                                  |
-| `src/model.py`         | Model architecture and feature-extraction components                                                                                       |
-| `hybrid_checkpoint.pt` | Trained weights for the residual, texture, and fusion components                                                                           |
-| `requirements.txt`     | Python dependencies required to run the project                                                                                            |
-| `README.md`            | Project documentation and usage instructions                                                                                               |
-
 ---
 
-# 🚀 Quick Start
+# Quick Start
 
 ## Installation
 
@@ -118,7 +87,21 @@ The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone th
 
 ---
 
-# 🔎 Running Inference
+# System Requirements
+
+### Recommended
+
+* **Python:** 3.10+
+* **RAM:** 16 GB+
+* **GPU:** NVIDIA CUDA-compatible GPU recommended
+* **Storage:** Sufficient space for PyTorch, DINOv2, and dependencies
+* **Internet:** Required for the first DINOv2 download unless the backbone is already cached
+
+CPU inference may be possible but is expected to be substantially slower than GPU inference.
+
+---
+
+# Running Inference
 
 Katsu provides a standalone inference script that accepts an **image directory** and produces a JSON file containing a confidence score for each image.
 
@@ -164,7 +147,7 @@ will process all supported images recursively.
 
 ---
 
-# 📄 JSON Output
+# JSON Output
 
 The inference script produces one prediction for every successfully processed image.
 
@@ -210,7 +193,7 @@ indicates a strong prediction toward a non-generated/real image.
 
 ---
 
-# 🏗️ Model Architecture
+# Model Architecture
 
 Katsu combines three complementary feature branches:
 
@@ -274,7 +257,7 @@ The final representation is passed through a sigmoid function to produce the AIG
 
 ---
 
-# 🧪 Training & Evaluation
+# Training & Evaluation
 
 The complete experimental pipeline is provided in:
 
@@ -306,7 +289,7 @@ rather than executing the entire notebook.
 
 ---
 
-# 🛡️ Redistribution Robustness
+# Redistribution Robustness
 
 A central design goal of Katsu is maintaining useful detection performance when images undergo transformations commonly introduced during online redistribution.
 
@@ -324,21 +307,7 @@ The robustness experiments and analysis are included in `KatsuDemo.ipynb`.
 
 ---
 
-# ⚙️ System Requirements
-
-### Recommended
-
-* **Python:** 3.10+
-* **RAM:** 16 GB+
-* **GPU:** NVIDIA CUDA-compatible GPU recommended
-* **Storage:** Sufficient space for PyTorch, DINOv2, and dependencies
-* **Internet:** Required for the first DINOv2 download unless the backbone is already cached
-
-CPU inference may be possible but is expected to be substantially slower than GPU inference.
-
----
-
-# 🧰 Development
+# Development
 
 Create a virtual environment:
 
@@ -385,7 +354,7 @@ The standalone `predict.py` script provides the reproducible inference interface
 
 ---
 
-# 📌 Reproducible Inference
+# Reproducible Inference
 
 A fresh user can reproduce inference using:
 
@@ -414,7 +383,7 @@ The resulting `predictions.json` contains:
 
 ---
 
-# 🙏 Acknowledgements
+# Acknowledgements
 
 Katsu builds upon open-source research and software, including:
 
@@ -427,29 +396,6 @@ The project also uses the datasets and resources documented in `KatsuDemo.ipynb`
 
 ---
 
-# 🏆 Competition
-
-Katsu was developed for:
-
-**TikTok TechJam 2026**
-
-The project focuses on robust, content-based detection of AI-generated images under realistic redistribution conditions.
-
----
-
-## 📄 License
-
-See the repository for licensing information.
-
----
-
-## 👥 Project
-
-**Katsu-Hybrid-AIGC-Detector**
-
-A lightweight hybrid approach to AI-generated image detection, combining pretrained semantic representations with complementary image-artifact and texture signals.
-
-**Built for robust AIGC detection in the real world.**
 
 
 
