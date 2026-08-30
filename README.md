@@ -106,10 +106,7 @@ files.download('predictions.json')
 | `image_path` | Path to the processed image                                                |
 | `pred`       | Model sigmoid output representing estimated probability of AIGC generation |
 
-The `pred` value ranges from **0 to 1**.
-
-Higher values indicate stronger model confidence that the image is AI-generated.
-
+The `pred` value ranges from **0 to 1**. Higher values indicate stronger model confidence that the image is AI-generated.
 
 
 ## Model Architecture
