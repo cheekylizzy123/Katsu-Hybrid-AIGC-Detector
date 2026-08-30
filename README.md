@@ -22,7 +22,8 @@ Platforms like TikTok already auto-label AI-generated content via C2PA Content C
 
 Katsu is a **content-based fallback layer** for exactly that scenario: it doesn't rely on any embedded signal, only the pixels themselves, and it's trained specifically to keep working after the kinds of transformations that strip metadata in the first place. That's the "redistribution robustness" this problem statement is testing, not just detecting AI-generated images in their original, clean form.
 
-## 📁 Project Structure
+
+## Project Structure
 
 ```text
 katsu-hybrid-aigc-detector/
@@ -37,11 +38,10 @@ katsu-hybrid-aigc-detector/
     └── 🧠 model.py             # Model architecture and feature extraction
 ```
 
----
 
-# Quick Start
+## Quick Start
 
-## Installation
+### Installation
 
 Python **3.10+** is recommended.
 
@@ -60,9 +60,8 @@ pip install -r requirements.txt
 
 The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone through PyTorch Hub, so internet access is required unless the model has already been cached locally.
 
----
 
-# System Requirements
+## System Requirements
 
 ### Recommended
 
@@ -74,9 +73,8 @@ The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone th
 
 CPU inference may be possible but is expected to be substantially slower than GPU inference.
 
----
 
-# Running Inference
+## Running Inference
 
 Katsu provides a standalone inference script that accepts an **image directory** and produces a JSON file containing a confidence score for each image.
 
@@ -120,9 +118,8 @@ python predict.py ./images \
 
 will process all supported images recursively.
 
----
 
-# JSON Output
+### JSON Output
 
 The inference script produces one prediction for every successfully processed image.
 
@@ -166,9 +163,8 @@ pred = 0.08
 
 indicates a strong prediction toward a non-generated/real image.
 
----
 
-# Model Architecture
+## Model Architecture
 
 Katsu combines three complementary feature branches:
 
@@ -203,19 +199,19 @@ Input Image ──────────────────────�
                                         AIGC Confidence
 ```
 
-## 1. DINOv2 Branch
+### 1. DINOv2 Branch
 
 A pretrained **DINOv2 ViT-S/14** backbone provides high-level visual representations.
 
 The backbone is frozen during training, allowing the detector to build a lightweight classification system on top of the pretrained representation.
 
-## 2. NPR Residual Branch
+### 2. NPR Residual Branch
 
 The residual branch extracts image artifacts associated with reconstruction, interpolation, and resampling.
 
 This branch is intended to capture lower-level signals that may complement the semantic representation produced by DINOv2.
 
-## 3. Texture Branch
+### 3. Texture Branch
 
 The texture branch extracts handcrafted statistical descriptors:
 
@@ -224,15 +220,14 @@ The texture branch extracts handcrafted statistical descriptors:
 
 These features provide additional information about local texture and spatial relationships between pixel intensities.
 
-## 4. Importance-Weighted Fusion
+### 4. Importance-Weighted Fusion
 
 The outputs of the three branches are projected into a common representation and combined through an importance-weighted fusion head.
 
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
 
----
 
-# Training & Evaluation
+## Training & Evaluation
 
 The complete experimental pipeline is provided in:
 
@@ -262,9 +257,8 @@ python predict.py
 
 rather than executing the entire notebook.
 
----
 
-# Redistribution Robustness
+## Redistribution Robustness
 
 A central design goal of Katsu is maintaining useful detection performance when images undergo transformations commonly introduced during online redistribution.
 
@@ -280,9 +274,8 @@ Instead, the detector operates directly on the available image content.
 
 The robustness experiments and analysis are included in `KatsuDemo.ipynb`.
 
----
 
-# Development
+## Development
 
 Create a virtual environment:
 
@@ -308,9 +301,8 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
----
 
-# 📓 Notebook
+##  Notebook
 
 `KatsuDemo.ipynb` serves as the complete research and experimentation record for the project.
 
@@ -327,9 +319,8 @@ It contains the development pipeline used to:
 
 The standalone `predict.py` script provides the reproducible inference interface for external evaluation.
 
----
 
-# Reproducible Inference
+## Reproducible Inference
 
 A fresh user can reproduce inference using:
 
@@ -355,21 +346,6 @@ The resulting `predictions.json` contains:
   }
 ]
 ```
-
----
-
-# Acknowledgements
-
-Katsu builds upon open-source research and software, including:
-
-* **DINOv2** for pretrained visual representations
-* **PyTorch** for model development and inference
-* **Torchvision** for computer-vision utilities
-* **scikit-image** for image and texture feature extraction
-
-The project also uses the datasets and resources documented in `KatsuDemo.ipynb`.
-
----
 
 
 
