@@ -16,11 +16,13 @@ This project was developed for **TikTok TechJam 2026**.
 <img width="1024" height="1059" alt="Katsu_Summary_Visual" src="https://github.com/user-attachments/assets/6d2cc0fd-172f-41be-a4e6-af7d3777ba73" />
 
 
+
 ## How This Solution Addresses the Problem Statement
 
 Platforms like TikTok already auto-label AI-generated content via C2PA Content Credentials and invisible watermarks, but that provenance metadata is stripped the moment content is screenshotted, re-encoded, or reposted off-platform. Once that happens, there's no metadata left to check.
 
 Katsu is a **content-based fallback layer** for exactly that scenario: it doesn't rely on any embedded signal, only the pixels themselves, and it's trained specifically to keep working after the kinds of transformations that strip metadata in the first place. That's the "redistribution robustness" this problem statement is testing, not just detecting AI-generated images in their original, clean form.
+
 
 
 ## Project Structure
@@ -37,6 +39,7 @@ katsu-hybrid-aigc-detector/
     ├── 📄 __init__.py
     └── 🧠 model.py             # Model architecture and feature extraction
 ```
+
 
 
 ## Installation and Setup
@@ -76,6 +79,7 @@ python predict.py ./path/to/images \
 The `pred` value ranges from **0 to 1**.
 
 Higher values indicate stronger model confidence that the image is AI-generated.
+
 
 
 ## Model Architecture
@@ -141,7 +145,7 @@ The outputs of the three branches are projected into a common representation and
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
 
 
-## Redistribution Robustness
+### Redistribution Robustness
 
 A central design goal of Katsu is maintaining useful detection performance when images undergo transformations commonly introduced during online redistribution.
 
