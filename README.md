@@ -22,31 +22,6 @@ Platforms like TikTok already auto-label AI-generated content via C2PA Content C
 
 Katsu is a **content-based fallback layer** for exactly that scenario: it doesn't rely on any embedded signal, only the pixels themselves, and it's trained specifically to keep working after the kinds of transformations that strip metadata in the first place. That's the "redistribution robustness" this problem statement is testing, not just detecting AI-generated images in their original, clean form.
 
-
-## Key Features
-
-* 🧠 **DINOv2 visual representation**
-
-  * Frozen DINOv2 ViT-S/14 backbone
-  * Captures high-level semantic and visual representations
-
-* 🔍 **NPR residual analysis**
-
-  * Uses an upsampling-based residual representation
-  * Captures reconstruction and resampling artifacts
-
-* 📊 **Texture analysis**
-
-  * Local Binary Pattern (LBP) features
-  * Gray-Level Co-occurrence Matrix (GLCM) statistics
-
-* ⚖️ **Importance-weighted feature fusion**
-
-  * Combines semantic, residual, and texture information
-  * Learns the relative importance of the different branches
-
----
-
 ## 📁 Project Structure
 
 ```text
