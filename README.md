@@ -68,9 +68,7 @@ python predict.py ./path/to/images \
     --output ./predictions.json
 ```
 
-### Output Fields
-
-| Field        | Description                                                                |
+| Output Field | Description                                                                |
 | ------------ | -------------------------------------------------------------------------- |
 | `image_path` | Path to the processed image                                                |
 | `pred`       | Model sigmoid output representing estimated probability of AIGC generation |
