@@ -13,14 +13,11 @@ modelscope==1.39.1
 # hardware, then delete or comment out the other.
 #
 # --- CPU-only ---
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.11.0
-torchvision==0.26.0
-#
-# --- GPU (CUDA 12.1) -- use this to train on NVIDIA GPU 
-# torch.cuda.is_available() returns False with the
-# CPU-only block above even on a GPU machine, since that build 
-# has no CUDA support compiled in at all. ---
-# --extra-index-url https://download.pytorch.org/whl/cu121
+# --extra-index-url https://download.pytorch.org/whl/cpu
 # torch==2.11.0
 # torchvision==0.26.0
+#
+# --- GPU (CUDA 12.1) -- 
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.11.0
+torchvision==0.26.0
