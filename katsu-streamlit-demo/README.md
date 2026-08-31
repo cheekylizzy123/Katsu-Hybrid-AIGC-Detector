@@ -1,25 +1,31 @@
 # Katsu — Hybrid AIGC Detector (Streamlit)
 
-**Live Demo**: https://katsu-demogit-ix9aua9mfr9fv4akep7dku.streamlit.app/
-Upload an image and Katsu classifies it as real or AI-generated, using a
-DINOv2 backbone plus two complementary artifact-detection branches (an NPR
-residual signal and handcrafted LBP/GLCM texture statistics), fused with an
-importance-weighted gate. Optional test-time transforms (blur, noise, JPEG
-compression, brightness) let you check robustness.
+**Try it live → https://katsu-demogit-ix9aua9mfr9fv4akep7dku.streamlit.app/**
 
-Inference-only — loads a pretrained checkpoint (`hybrid_checkpoint.pt`) at
-startup. No training, no dataset downloads.
+## What the demo shows
 
-## Deploying on Streamlit Community Cloud
+- **Classification decision** — real vs. fake, with a confidence score
+- **Branch weight contribution** — how much each of the three detection
+  branches (DINOv2, NPR, texture) influenced the final decision
+- **Spatial attribution maps** — heatmaps showing *where* in the image
+  the DINOv2 and NPR branches found the strongest signal
+- **Texture features** — the raw LBP/GLCM statistics the texture branch
+  extracted from the image
+- **Robustness testing** — optional toggles (blur, noise, JPEG
+  compression, brightness) to see how predictions hold up under common
+  image transformations
 
-1. Push this folder (including `hybrid_checkpoint.pt`, tracked via git-lfs)
-   to a GitHub repo.
-2. Go to share.streamlit.io → "New app" → point it at the repo, branch,
-   and `app.py`.
-3. If you'd rather not commit the checkpoint binary to git, skip it and
-   instead set these in the app's Settings → Secrets:
-   ```
-   CHECKPOINT_REPO_ID = "your-username/katsu-weights"
-   ```
-   (a separate Hugging Face model repo hosting just the .pt file) —
-   `app.py` will download it automatically at startup via `hf_hub_download`.
+## Running it locally instead
+
+If you'd rather run the demo yourself rather than use the live link:
+
+```bash
+cd katsu-streamlit-demo
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+This loads `hybrid_checkpoint.pt` (included in this folder) and starts
+a local server — Streamlit will print a `localhost` URL to open in your
+browser. The DINOv2 backbone downloads automatically on first run.
+
