@@ -13,9 +13,6 @@ Only **33,842 trainable parameters** are used on top of the frozen backbone.
 
 This project was developed for **TikTok TechJam 2026**. 
 
-<img width="1024" height="1059" alt="Katsu_Summary_Visual" src="https://github.com/user-attachments/assets/6d2cc0fd-172f-41be-a4e6-af7d3777ba73" />
-
-
 
 ## How This Solution Addresses the Problem Statement
 
