@@ -1,7 +1,7 @@
 # Katsu-Hybrid-AIGC-Detector
 Katsu is a lightweight hybrid model for detecting **AI-generated images (AIGC)** using visual evidence contained directly in the image pixels. **Link to Demo**: https://katsu-demogit-ix9aua9mfr9fv4akep7dku.streamlit.app/
 
-The model is designed specifically for **real-world redistribution**, where images may be recompressed, resized, cropped, or affected by noise. Rather than relying on metadata, watermarks, or provenance signals, Katsu combines semantic visual representations with complementary image-artifact and texture features. **Robustness Evaluation Summary** is included at the end of this document while **Error Analysis Note** is included as **Error Analysis.md**.
+The model is designed specifically for **real-world redistribution**, where images may be recompressed, resized, cropped, or affected by noise. Rather than relying on metadata, watermarks, or provenance signals, Katsu combines semantic visual representations with complementary image-artifact and texture features. **Robustness Evaluation Summary** and **Error Analysis Note** are both included as **Robustness Evaluation.md**.
 
 The system uses a **frozen DINOv2 ViT-S/14 backbone** together with two lightweight artifact-detection branches:
 
@@ -173,17 +173,5 @@ These features provide additional information about local texture and spatial re
 The outputs of the three branches are projected into a common representation and combined through an importance-weighted fusion head.
 
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
-
-
-### Robustness Evaluation Summary
-
-| Condition | Accuracy | AUROC |
-|---|---|---|
-| Clean | 86.0% | 91.9% |
-| JPEG (q=30) | 84.7% | 89.8% |
-| Blur (sigma=2.0) | 80.0% | 88.2% |
-| Resize (0.25x) | 75.3% | 86.8% |
-| Noise (sigma=0.10) | 80.0% | 87.6% |
-| Center crop (80%) | 84.0% | 90.5% |
 
 
