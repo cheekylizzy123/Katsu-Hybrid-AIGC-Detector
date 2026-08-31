@@ -41,7 +41,7 @@ katsu-hybrid-aigc-detector/
     ├── predict.py
     └── requirements.txt
 ```
-
+<br><br>
 ## Installation and Setup: Inference Interface
 
 ### Option A: Google Colab (Recommended)
@@ -110,9 +110,8 @@ python predict.py /path/to/image_folder --checkpoint hybrid_checkpoint.pt --outp
 Accepts `.jpg`, `.jpeg`, `.png`, `.bmp`, and `.webp` files. Unreadable files are skipped with a warning rather
 than stopping the run.
 
-### Results
+### Results: Output Format
 
-**Output Format**
 ```json
 [
   { "image_path": "test_images/photo1.jpg", "pred": 0.0213 },
@@ -135,9 +134,9 @@ pip install -r requirements-training.txt
 
 **2. Open `KatsuTraining.ipynb`** in **Colab** and run the cells in order
 
-**Self-Transformed Dataset**
+#### Self-Transformed Dataset
 
-This dataset was transformed from 5k raw real images from COCO train2017 and 6k raw AI-generated images, split evenly across SD1.5, Midjourney, and ADM, to form 33k transformed images. The inclusion of architecturally distinct generators (latent diffusion, closed-source/black-box, and pixel-space diffusion) forces the detector to learn generalisable generation artifacts rather than memorising the fingerprint of a single generator.
+The dataset was transformed from 5k raw real images from COCO train2017 and 6k raw AI-generated images, split evenly across SD1.5, Midjourney, and ADM, to form 33k transformed images. The inclusion of architecturally distinct generators (latent diffusion, closed-source/black-box, and pixel-space diffusion) forces the detector to learn generalisable generation artifacts rather than memorising the fingerprint of a single generator.
 
 **Link to Self-Transformed Dataset:** https://www.kaggle.com/datasets/shxrlenee/aigc-detection-dataset
 <br><br>
