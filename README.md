@@ -12,16 +12,13 @@ The system uses a **frozen DINOv2 ViT-S/14 backbone** together with two lightwei
 Only **33,842 trainable parameters** are used on top of the frozen backbone.
 
 This project was developed for **TikTok TechJam 2026**. 
-
-
+<br><br>
 ## How This Solution Addresses the Problem Statement
 
 Platforms like TikTok already auto-label AI-generated content via C2PA Content Credentials and invisible watermarks, but that provenance metadata is stripped the moment content is screenshotted, re-encoded, or reposted off-platform. Once that happens, there's no metadata left to check.
 
 Katsu is a **content-based fallback layer** for exactly that scenario: it doesn't rely on any embedded signal, only the pixels themselves, and it's trained specifically to keep working after the kinds of transformations that strip metadata in the first place. That's the "redistribution robustness" this problem statement is testing, not just detecting AI-generated images in their original, clean form.
-
-
-
+<br><br>
 ## Repository Structure
 
 ```
@@ -124,8 +121,7 @@ than stopping the run.
 ```
 
 The `pred` value ranges from **0 to 1**. Higher values indicate stronger model confidence that the image is AI-generated.
-
-
+<br><br>
 ## Installation and Setup: Reproduce Training & Evaluation
 
 **Link to Colab:** https://colab.research.google.com/drive/1e-8D6em4XKlE877zceaQa7YKcWTEHQG2?usp=sharing 
@@ -139,6 +135,12 @@ pip install -r requirements-training.txt
 
 **2. Open `KatsuTraining.ipynb`** in **Colab** and run the cells in order
 
+**Self-Transformed Dataset**
+
+This dataset was transformed from 5k raw real images from COCO train2017 and 6k raw AI-generated images, split evenly across SD1.5, Midjourney, and ADM, to form 33k transformed images. The inclusion of architecturally distinct generators (latent diffusion, closed-source/black-box, and pixel-space diffusion) forces the detector to learn generalisable generation artifacts rather than memorising the fingerprint of a single generator.
+
+**Link to Self-Transformed Dataset:** https://www.kaggle.com/datasets/shxrlenee/aigc-detection-dataset
+<br><br>
 ## Model Architecture
 
 Katsu combines three complementary feature branches:
@@ -200,5 +202,9 @@ These features provide additional information about local texture and spatial re
 The outputs of the three branches are projected into a common representation and combined through an importance-weighted fusion head.
 
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
+<br><br>
+## Limitations & Potential Improvements
+<br><br>
+## Team Members' Contributions
 
 
