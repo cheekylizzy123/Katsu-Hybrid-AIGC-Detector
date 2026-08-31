@@ -1,4 +1,4 @@
-## 🛡️ Robustness Evaluation — Katsu-Hybrid-AIGC-Detector
+## 🛡️ Error Analysis Note
 
 Real content moderation pipelines rarely see pristine images — by the time a photo or AI-generated
 image reaches a platform, it's typically been **re-compressed, resized, or lightly edited** through
