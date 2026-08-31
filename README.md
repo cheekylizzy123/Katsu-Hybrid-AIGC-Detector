@@ -177,18 +177,6 @@ The final representation is passed through a sigmoid function to produce the AIG
 
 ### Robustness Evaluation Summary
 
-A central design goal of Katsu is maintaining useful detection performance when images undergo transformations commonly introduced during online redistribution.
-
-The approach therefore does not depend on:
-
-* Embedded metadata
-* C2PA credentials
-* Original filenames
-* Platform-specific provenance
-* Invisible watermarks
-
-Instead, the detector operates directly on the available image content.
-
 | Condition | Accuracy | AUROC |
 |---|---|---|
 | Clean | 86.0% | 91.9% |
