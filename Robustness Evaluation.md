@@ -45,26 +45,37 @@ fine-tuning** — and measured how much performance degraded relative to the cle
   ranking of real vs. fake images stays more stable than its fixed-threshold decisions — a fixed
   decision threshold could be recalibrated per-condition to recover some of the accuracy loss.
 
-
 ### False Positives (real → predicted fake)
 
-| Image | Source | Pred |
-|---|---|---|
-| `real_01516..._v3_center_crop-80_color-minus20_blur-sigma_0.5_noise-sigma_0.05_jpeg-q50.png` | self_transformed_set | 0.986 |
-| `real_203.jpg` | sid_set | 0.953 |
-| `1358 (8).jpg` | cifake | 0.937 |
-| `2235.jpg` | cifake | 0.915 |
-| `real_7.jpg` | sid_set | 0.902 |
+<table>
+<colgroup>
+<col style="width:55%">
+<col style="width:25%">
+<col style="width:20%">
+</colgroup>
+<tr><th>Image</th><th>Source</th><th>Pred</th></tr>
+<tr><td><code>real_01516..._v3_center_crop-80_...-jpeg-q50.png</code></td><td>self_transformed_set</td><td>0.986</td></tr>
+<tr><td><code>real_203.jpg</code></td><td>sid_set</td><td>0.953</td></tr>
+<tr><td><code>1358 (8).jpg</code></td><td>cifake</td><td>0.937</td></tr>
+<tr><td><code>2235.jpg</code></td><td>cifake</td><td>0.915</td></tr>
+<tr><td><code>real_7.jpg</code></td><td>sid_set</td><td>0.902</td></tr>
+</table>
 
 ### False Negatives (fake → predicted real)
 
-| Image | Source | Pred |
-|---|---|---|
-| `fully_synthetic_87.jpg` | sid_set | 0.018 |
-| `tampered_61.jpg` | sid_set | 0.027 |
-| `tampered_35.jpg` | sid_set | 0.038 |
-| `tampered_98.jpg` | sid_set | 0.038 |
-| `sd15_01470..._v2_color-minus20_blur-sigma_2_jpeg-q70.png` | self_transformed_set | 0.051 |
+<table>
+<colgroup>
+<col style="width:55%">
+<col style="width:25%">
+<col style="width:20%">
+</colgroup>
+<tr><th>Image</th><th>Source</th><th>Pred</th></tr>
+<tr><td><code>fully_synthetic_87.jpg</code></td><td>sid_set</td><td>0.018</td></tr>
+<tr><td><code>tampered_61.jpg</code></td><td>sid_set</td><td>0.027</td></tr>
+<tr><td><code>tampered_35.jpg</code></td><td>sid_set</td><td>0.038</td></tr>
+<tr><td><code>tampered_98.jpg</code></td><td>sid_set</td><td>0.038</td></tr>
+<tr><td><code>sd15_01470..._v2_color-minus20_...-jpeg-q70.png</code></td><td>self_transformed_set</td><td>0.051</td></tr>
+</table>
 
 **Pred** is the model's predicted probability of being AI-generated (0 = confidently real, 1 = confidently fake).
 
