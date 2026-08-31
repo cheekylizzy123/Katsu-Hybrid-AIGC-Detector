@@ -203,7 +203,21 @@ The outputs of the three branches are projected into a common representation and
 The final representation is passed through a sigmoid function to produce the AIGC confidence score.
 <br><br>
 ## Limitations & Potential Improvements
-<br><br>
-## Team Members' Contributions
 
+### 1. Frozen DINOv2 backbone caps the accuracy
+Keeping DINOv2 fully frozen and total trainable params at 33.8K was a deliberate efficiency choice, but it also means the model can only ever re-weight existing DINOv2/NPR/texture features — it can't learn new representations, which likely explains the accuracy plateau in the 81–87% range across every evaluation condition
+
+**Improvement: Selectively unfreezing DINOv2's last block (small LR) as an ablation & compare evaluation**
+
+### 2. Lack of language-aligned semantic representations
+Originally scoped as a dual-backbone design (CLIP ViT-L/14 + DINOv2 ViT-S/14), the architecture was reduced to DINOv2 only due to VRAM limits, which may reduce the model's ability to catch semantically implausible generations
+
+**Improvement: Reintroduce CLIP ViT-L/14 as a second backbone given access to more VRAM, or explore mitigations such as gradient checkpointing, mixed precision, or sequential backbone forward passes**
+<br><br>
+## Team Member Contributions
+
+- **Sharlene** — Data pipeline (WildFake/CIFAKE/SID_Set preprocessing, manifest building, CLIP feature caching)
+- **Elizabeth** — Model architecture (DINOv2 backbone, NPR residual branch, texture feature extraction, fusion head)
+- **Kai En** — Training loop, hyperparameter tuning, checkpoint management
+- **Jing Jing** — Evaluation (robustness testing, error analysis, OOD validation set), README and documentation
 
