@@ -45,8 +45,28 @@ fine-tuning** — and measured how much performance degraded relative to the cle
   ranking of real vs. fake images stays more stable than its fixed-threshold decisions — a fixed
   decision threshold could be recalibrated per-condition to recover some of the accuracy loss.
 
-<sub>See `false_positives.csv` / `false_negatives.csv` in this repo for the underlying misclassified
-examples, including edge cases from the self-transformed (perturbation-stacked) test subset.</sub>
+
+### False Positives (real → predicted fake)
+
+| Image | Source | Pred |
+|---|---|---|
+| `real_01516..._v3_center_crop-80_color-minus20_blur-sigma_0.5_noise-sigma_0.05_jpeg-q50.png` | self_transformed_set | 0.986 |
+| `real_203.jpg` | sid_set | 0.953 |
+| `1358 (8).jpg` | cifake | 0.937 |
+| `2235.jpg` | cifake | 0.915 |
+| `real_7.jpg` | sid_set | 0.902 |
+
+### False Negatives (fake → predicted real)
+
+| Image | Source | Pred |
+|---|---|---|
+| `fully_synthetic_87.jpg` | sid_set | 0.018 |
+| `tampered_61.jpg` | sid_set | 0.027 |
+| `tampered_35.jpg` | sid_set | 0.038 |
+| `tampered_98.jpg` | sid_set | 0.038 |
+| `sd15_01470..._v2_color-minus20_blur-sigma_2_jpeg-q70.png` | self_transformed_set | 0.051 |
+
+**Pred** is the model's predicted probability of being AI-generated (0 = confidently real, 1 = confidently fake).
 
 ---
 
