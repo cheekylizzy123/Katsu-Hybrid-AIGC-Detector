@@ -49,7 +49,7 @@ katsu-hybrid-aigc-detector/
 
 ### Option A: Google Colab (Recommended)
 
-https://colab.research.google.com/drive/1RCrPGQaUM2nOr0uymuZAkN259atOSKDj?usp=sharing
+**Link to Colab:** https://colab.research.google.com/drive/1RCrPGQaUM2nOr0uymuZAkN259atOSKDj?usp=sharing
 
 **1. Install dependencies in Colab notebook:** 
 
@@ -128,7 +128,7 @@ The `pred` value ranges from **0 to 1**. Higher values indicate stronger model c
 
 ## Installation and Setup: Reproduce Training & Evaluation
 
-https://colab.research.google.com/drive/1e-8D6em4XKlE877zceaQa7YKcWTEHQG2?usp=sharing 
+**Link to Colab:** https://colab.research.google.com/drive/1e-8D6em4XKlE877zceaQa7YKcWTEHQG2?usp=sharing 
 
 **1. Install dependencies:** 
 
