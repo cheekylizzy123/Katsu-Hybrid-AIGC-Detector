@@ -9,3 +9,4 @@ predictions.json
 examples/input/*
 examples/output/*
 *.pt
+!hybrid_checkpoint.pt
