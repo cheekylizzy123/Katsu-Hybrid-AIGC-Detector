@@ -1,5 +1,6 @@
 # Katsu — Hybrid AIGC Detector (Streamlit)
 
+**Live Demo**: https://katsu-demogit-ix9aua9mfr9fv4akep7dku.streamlit.app/
 Upload an image and Katsu classifies it as real or AI-generated, using a
 DINOv2 backbone plus two complementary artifact-detection branches (an NPR
 residual signal and handcrafted LBP/GLCM texture statistics), fused with an
