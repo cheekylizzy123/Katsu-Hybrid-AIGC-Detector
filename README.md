@@ -130,10 +130,11 @@ The `pred` value ranges from **0 to 1**. Higher values indicate stronger model c
 
 https://colab.research.google.com/drive/1e-8D6em4XKlE877zceaQa7YKcWTEHQG2?usp=sharing 
 
-**1. Install the notebook's dependencies:** 
+**1. Install dependencies:** 
 
 ```bash
 pip install -r requirements-training.txt
+# default 
 ```
 
 **2. Open `KatsuTraining.ipynb`** in **Colab** and run the cells in order
