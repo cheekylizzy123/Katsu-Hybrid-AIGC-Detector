@@ -1,4 +1,4 @@
-## 🛡️ Error Analysis Note
+## 🛡️ Robustness Evaluation
 
 Real content moderation pipelines rarely see pristine images — by the time a photo or AI-generated
 image reaches a platform, it's typically been **re-compressed, resized, or lightly edited** through
@@ -50,7 +50,7 @@ examples, including edge cases from the self-transformed (perturbation-stacked) 
 
 ---
 
-## 🔍 5. Error Analysis Note
+## 🔍 Error Analysis Note
 
 We inspected the model's highest-confidence errors on the held-out test set to understand *how* the
 Katsu-Hybrid-AIGC-Detector fails, not just how often.
