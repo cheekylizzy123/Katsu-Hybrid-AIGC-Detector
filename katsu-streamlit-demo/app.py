@@ -20,9 +20,7 @@ from predict import (
 BRANCH_ORDER = ["dino", "npr", "texture"]  # matches training order exactly
 
 # ---------- Locate the checkpoint ----------
-# Option A (default): checkpoint file committed directly to the repo (via git-lfs).
-# Option B: set CHECKPOINT_REPO_ID (in Streamlit's Secrets) to pull it from a
-#           separate HF model repo instead of committing the binary to git.
+# checkpoint file committed directly to the repo (via git-lfs).
 CHECKPOINT_PATH = st.secrets.get("CHECKPOINT_PATH", "hybrid_checkpoint.pt")
 CHECKPOINT_REPO_ID = st.secrets.get("CHECKPOINT_REPO_ID", None)
 CHECKPOINT_FILENAME = st.secrets.get("CHECKPOINT_FILENAME", "hybrid_checkpoint.pt")
@@ -213,10 +211,6 @@ with right:
     weights_placeholder = st.empty()
 
 st.markdown("---")
-st.markdown(
-    "### Spatial Attribution — DINOv2 and NPR are genuinely spatial; "
-    "texture is shown as raw features, not a fabricated heatmap."
-)
 
 col_dino, col_npr, col_tex = st.columns(3)
 
