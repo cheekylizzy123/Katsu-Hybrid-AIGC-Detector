@@ -22,64 +22,49 @@ Katsu is a **content-based fallback layer** for exactly that scenario: it doesn'
 
 
 
-## Project Structure
+## Repository Structure
 
-```text
+```
 katsu-hybrid-aigc-detector/
-├── 📄 README.md
-├── 📓 KatsuTraining.ipynb      # Full experimental/training/analysis notebook
-├── 🐍 predict.py               # Directory → JSON inference script
-├── 📦 hybrid_checkpoint.pt     # Trained model checkpoint
-├── 📋 requirements.txt         # Python dependencies
+├── README.md
+├── KatsuTraining.ipynb        # Full experimental/training/analysis notebook
+├── predict.py                 # Directory → JSON inference script
+├── hybrid_checkpoint.pt       # Trained model checkpoint
+├── requirements.txt           # Dependencies for predict.py
+├── requirements-training.txt  # Dependencies for KatsuTraining.ipynb
 │
-└── 📁 src/
-    ├── 📄 __init__.py
-    └── 🧠 model.py             # Model architecture and feature extraction
-└── 📁 katsu-streamlit-demo/
-    ├── 📄 README.md
-    ├── 📋 app.py
-    ├── 📦 hybrid_checkpoint.pt
-    ├── 📋 predict.py
-    └── 📋 requirements.txt
+├── src/
+│   ├── __init__.py
+│   └── model.py                # Model architecture and feature extraction
+│
+└── katsu-streamlit-demo/       # Demo files
+    ├── README.md
+    ├── app.py
+    ├── hybrid_checkpoint.pt
+    ├── predict.py
+    └── requirements.txt
 ```
 
+## Installation and Setup: Inference Interface
 
+### Option A: Google Colab (Recommended)
 
-## Installation and Setup
+https://colab.research.google.com/drive/1RCrPGQaUM2nOr0uymuZAkN259atOSKDj?usp=sharing
 
-Python **3.10+** is recommended.
-
-Clone the repository:
-
-```bash
-git clone https://github.com/cheekylizzy123/Katsu-Hybrid-AIGC-Detector.git
-cd Katsu-Hybrid-AIGC-Detector
-```
-
-Install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-The first inference run downloads the pretrained **DINOv2 ViT-S/14** backbone through PyTorch Hub, so internet access is required unless the model has already been cached locally.
-
-## Inference Interface
-
-**1. Install dependencies in Colab notebook** 
+**1. Install dependencies in Colab notebook:** 
 
 ```python
 !pip install -q scikit-image opencv-python-headless
 ```
 
-**2. Upload `predict.py` and `hybrid_checkpoint.pt`**
+**2. Upload `predict.py` and `hybrid_checkpoint.pt`:**
 
 ```python
 from google.colab import files
 uploaded = files.upload()
 ```
 
-**3. Upload your test images.** 
+**3. Upload your test images (.zip file):** 
 
 ```python
 from google.colab import files
@@ -87,8 +72,9 @@ uploaded_zip = files.upload()
 ```
 ```python
 import zipfile
-with zipfile.ZipFile('images.zip', 'r') as z: # change 'image.zip' to 'file_name.zip'
+with zipfile.ZipFile('images.zip', 'r') as z: 
     z.extractall('/content/test_images')
+# change 'image.zip' to 'file_name.zip'
 ```
 
 **4. Run the scoring script:**
@@ -104,13 +90,53 @@ from google.colab import files
 files.download('predictions.json')
 ```
 
-| Output Field | Description                                                                |
-| ------------ | -------------------------------------------------------------------------- |
-| `image_path` | Path to the processed image                                                |
-| `pred`       | Model sigmoid output representing estimated probability of AIGC generation |
+### Option B: Python Environment
+
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/cheekylizzy123/Katsu-Hybrid-AIGC-Detector.git
+cd Katsu-Hybrid-AIGC-Detector
+```
+
+**2. Install dependencies** (Python 3.10+ recommended):
+
+```bash
+pip install -r requirements.txt
+```
+
+**3. Run the script** on any folder of images:
+
+```bash
+python predict.py /path/to/image_folder --checkpoint hybrid_checkpoint.pt --output predictions.json
+```
+Accepts `.jpg`, `.jpeg`, `.png`, `.bmp`, and `.webp` files. Unreadable files are skipped with a warning rather
+than stopping the run.
+
+### Results
+
+**Output Format**
+```json
+[
+  { "image_path": "test_images/photo1.jpg", "pred": 0.0213 },
+  { "image_path": "test_images/photo2.png", "pred": 0.9142 }
+]
+```
 
 The `pred` value ranges from **0 to 1**. Higher values indicate stronger model confidence that the image is AI-generated.
 
+
+## Installation and Setup: Reproduce Training & Evaluation
+
+https://colab.research.google.com/drive/1e-8D6em4XKlE877zceaQa7YKcWTEHQG2?usp=sharing 
+
+**1. Install the notebook's dependencies:** 
+
+```bash
+pip install -r requirements-training.txt
+```
+
+**2. Open `KatsuTraining.ipynb`** in **Colab** and run the cells in order
 
 ## Model Architecture
 
