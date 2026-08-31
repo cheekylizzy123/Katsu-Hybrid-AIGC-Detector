@@ -216,8 +216,9 @@ Originally scoped as a dual-backbone design (CLIP ViT-L/14 + DINOv2 ViT-S/14), t
 <br><br>
 ## Team Member Contributions
 
-- **Sharlene** — Data pipeline (WildFake/CIFAKE/SID_Set/Self-Transformed preprocessing, CLIP feature caching)
-- **Elizabeth** — Model architecture (DINOv2 backbone, NPR residual branch, texture feature extraction, fusion head)
-- **Kai En** — Training loop, hyperparameter tuning, checkpoint management, manifest building
-- **Jing Jing** — Evaluation (robustness testing, error analysis, OOD validation set), inference, demo
+All members collaborated closely on architecture design and data pipeline; individual focus areas below:
+- Sharlene — Data pipeline (WildFake/CIFAKE/SID_Set/Self-Transformed preprocessing, CLIP feature caching)
+- Elizabeth — Model architecture (DINOv2 backbone, NPR residual branch, texture feature extraction, fusion head)
+- Kai En — Training loop, hyperparameter tuning, checkpoint management, manifest building
+- Jing Jing — Evaluation (robustness testing, error analysis, OOD validation set), inference, demo
 
