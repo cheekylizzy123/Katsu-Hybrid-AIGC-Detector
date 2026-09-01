@@ -13,7 +13,7 @@ fine-tuning** — and measured how much performance degraded relative to the cle
 
 | Aspect | Detail |
 |---|---|
-| **Test set** | Held-out clean test split (SID-Set, CIFAKE) |
+| **Test set** | Held-out clean test split (SID-Set, CIFAKE,self_transformed dataset) |
 | **Perturbation scope** | One perturbation applied at a time (isolated, not stacked) |
 | **Model** | Same trained checkpoint used for the clean baseline — no retraining or fine-tuning per condition |
 | **Metrics** | Accuracy (binary real/fake classification) and AUROC |
