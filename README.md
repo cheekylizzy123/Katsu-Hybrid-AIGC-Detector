@@ -24,6 +24,7 @@ Katsu is a **content-based fallback layer** for exactly that scenario: it doesn'
 ```
 katsu-hybrid-aigc-detector/
 ├── README.md
+├── Robustness Evaluation.md   # Robustness Evaluation & Error Analysis
 ├── KatsuTraining.ipynb        # Full experimental/training/analysis notebook
 ├── predict.py                 # Directory → JSON inference script
 ├── hybrid_checkpoint.pt       # Trained model checkpoint
